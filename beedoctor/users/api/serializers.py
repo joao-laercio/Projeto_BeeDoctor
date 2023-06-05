@@ -1,5 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from dataclasses import fields
+from django.db import models
+from beedoctor.users.models import Medico
 
 User = get_user_model()
 
