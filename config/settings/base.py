@@ -44,7 +44,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "beedoctor",
         "USER": "postgres",
-        "PASSWORD": "1254789",
+        "PASSWORD": "7485",
         "HOST": "localhost",
         "PORT": "5432",
     }

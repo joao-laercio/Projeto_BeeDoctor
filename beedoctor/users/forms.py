@@ -4,7 +4,8 @@ from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
 from django.forms import EmailField
 from django.utils.translation import gettext_lazy as _
-
+from django import forms
+from .models import Especialidade, Clinica, Medico, Consulta
 User = get_user_model()
 
 
@@ -43,3 +44,30 @@ class UserSocialSignupForm(SocialSignupForm):
     Default fields will be added automatically.
     See UserSignupForm otherwise.
     """
+    
+
+
+
+
+class EspecialidadeForm(forms.ModelForm):
+    class Meta:
+        model = Especialidade
+        fields = ['nome']
+
+
+class ClinicaForm(forms.ModelForm):
+    class Meta:
+        model = Clinica
+        fields = ['cnpj', 'razao_social', 'nome_fantasia', 'endereco', 'telefone', 'documentos_validacao', 'data_inicio', 'especialidades']
+
+
+class MedicoForm(forms.ModelForm):
+    class Meta:
+        model = Medico
+        fields = ['crm', 'nome', 'cpf', 'rg', 'endereco', 'data_nascimento', 'documentos_validacao']
+
+
+class ConsultaForm(forms.ModelForm):
+    class Meta:
+        model = Consulta
+        fields = ['paciente', 'medico', 'clinica', 'data', 'horario', 'agendada']
