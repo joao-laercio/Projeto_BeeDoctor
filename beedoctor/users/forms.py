@@ -31,6 +31,20 @@ class UserAdminCreationForm(admin_forms.UserCreationForm):
 
 
 class UserSignupForm(SignupForm):
+    cpf = forms.CharField(label="CPF", max_length=11)
+    data_nascimento = forms.DateField(label="Data de Nascimento", widget=forms.DateInput(attrs={'type': 'date'}))
+    endereco = forms.CharField(label="Endereço")
+
+    def save(self, request):
+        user = super().save(request)
+
+        # Salvar os campos adicionais no modelo User
+        user.userprofile.cpf = self.cleaned_data["cpf"]
+        user.userprofile.data_nascimento = self.cleaned_data["data_nascimento"]
+        user.userprofile.endereco = self.cleaned_data["endereco"]
+        user.userprofile.save()
+
+        return user
     """
     Form that will be rendered on a user sign up section/screen.
     Default fields will be added automatically.

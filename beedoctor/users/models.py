@@ -6,19 +6,17 @@ from django.db import models
 from beedoctor.users.managers import UserManager
 
 
-class User(AbstractUser):
-    """
-    Default custom user model for beedoctor.
-    If adding fields that need to be filled at user signup,
-    check forms.SignupForm and forms.SocialSignupForms accordingly.
-    """
 
-    # First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    first_name = None  # type: ignore
-    last_name = None  # type: ignore
-    email = EmailField(_("email address"), unique=True)
-    username = None  # type: ignore
+
+class User(AbstractUser):
+    # Existing fields
+    username = models.CharField(_("username"), max_length=150, unique=True, default="")
+    email = models.EmailField(_("email address"), unique=True)
+
+    # New fields
+    cpf = models.CharField(_("CPF"), max_length=11, blank=True)
+    data_nascimento = models.DateField(_("Data de Nascimento"), null=True, blank=True)
+    endereco = models.TextField(_("Endereço"), blank=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -26,13 +24,13 @@ class User(AbstractUser):
     objects = UserManager()
 
     def get_absolute_url(self) -> str:
-        """Get URL for user's detail view.
+        # Adicione a implementação do método get_absolute_url, se necessário
+        pass
 
-        Returns:
-            str: URL for user detail.
-
-        """
         return reverse("users:detail", kwargs={"pk": self.id})
+
+
+   
 
 
 
@@ -60,6 +58,7 @@ class Especialidade(models.Model):
         ("Cirurgia Geral", "Cirurgia Geral"),
     ]
     nome = models.CharField(max_length=100, choices=OPCOES_ESPECIALIDADE)
+    
 
     def __str__(self):
         return self.nome
