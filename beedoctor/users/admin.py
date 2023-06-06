@@ -7,6 +7,9 @@ from django.utils.translation import gettext_lazy as _
 
 from beedoctor.users.forms import UserSignupForm
 
+from .models import Medico, Clinica, Consulta
+
+
 User = get_user_model()
 
 
@@ -48,3 +51,7 @@ class UserAdmin(auth_admin.UserAdmin):
         return obj.user
 
     get_user.short_description = _("User")
+
+admin.site.register(Medico)
+admin.site.register(Clinica)
+admin.site.register(Consulta)

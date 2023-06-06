@@ -7,6 +7,7 @@ from beedoctor.users.managers import UserManager
 
 
 
+
 class User(AbstractUser):
     # Existing fields
     username = models.CharField(_("username"), max_length=150, unique=True, default="")
@@ -22,17 +23,12 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    def save(self, *args, **kwargs):
-        if not self.username:
-            # Se o campo username estiver vazio, defina-o como o valor do email antes de salvar
-            self.username = self.email
-        super().save(*args, **kwargs)
-
     def get_absolute_url(self) -> str:
         # Adicione a implementação do método get_absolute_url, se necessário
         pass
 
         return reverse("users:detail", kwargs={"pk": self.id})
+
 
    
 
