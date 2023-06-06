@@ -7,11 +7,15 @@ from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework import routers
-from beedoctor.users.api.views import MedicosViewSet
+from beedoctor.users.api.views import MedicosViewSet,UserViewSet, ClinicaViewSet,ConsultaViewSet,EspecialidadeViewSet,RealizarConsultaViewSet
 
 router = routers.DefaultRouter()
-router.register(r'medicos', MedicosViewSet, basename='Medicos')
-
+router.register('medicos', MedicosViewSet)
+router.register('users', UserViewSet)
+router.register('clinicas', ClinicaViewSet)
+router.register('consultas', ConsultaViewSet, basename='consultas')
+router.register('especialidades', EspecialidadeViewSet)
+router.register('realizar-consulta', RealizarConsultaViewSet, basename='realizar-consulta')
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
