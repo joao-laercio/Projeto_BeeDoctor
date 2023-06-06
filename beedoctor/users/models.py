@@ -65,32 +65,32 @@ class Especialidade(models.Model):
 
 
 class Clinica(models.Model):
-    cnpj = models.CharField(max_length=18, unique=True)
-    razao_social = models.CharField(max_length=100)
-    nome_fantasia = models.CharField(max_length=100)
-    endereco = models.CharField(max_length=200)
-    telefone = models.CharField(max_length=20)
+    cnpj = models.CharField("cnpj", max_length=18, unique=True)
+    razao_social = models.CharField("Razão social", max_length=100)
+    nome_fantasia = models.CharField("Nome fantasia", max_length=100)
+    endereco = models.CharField("Endereço",max_length=200)
+    telefone = models.CharField("Telefone",max_length=20)
     documentos_validacao = models.FileField(upload_to='documentos/clinicas')
     data_inicio = models.DateField()
     especialidades = models.ManyToManyField(Especialidade)
 
     def __str__(self):
-        return self.nome_fantasia
+        return "{}".format(self.nome_fantasia)
 
 
 
 class Medico(models.Model):
-    crm = models.CharField(max_length=20)
-    nome = models.CharField(max_length=100)
-    cpf = models.CharField(max_length=14)
-    rg = models.CharField(max_length=20)
-    endereco = models.CharField(max_length=200)
+    crm = models.CharField("Crm", max_length=20)
+    nome = models.CharField("Nome", max_length=100)
+    cpf = models.CharField("Cpf", max_length=20, default="")
+    rg = models.CharField("Rg", max_length=20)
+    endereco = models.CharField("Endereço", max_length=200)
     data_nascimento = models.DateField()
     documentos_validacao = models.FileField(upload_to='documentos/')
     # Outros campos relacionados ao cadastro do médico
 
     def __str__(self):
-        return self.nome
+        return "{}".format(self.nome)
 
 
 
@@ -103,4 +103,4 @@ class Consulta(models.Model):
     agendada = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'Consulta de {self.paciente} com {self.medico}'
+        return "{} - {}".format(self.paciente, self.medico)
