@@ -7,7 +7,8 @@ from django.utils.translation import gettext_lazy as _
 
 from beedoctor.users.forms import UserSignupForm
 
-from .models import Medico, Clinica, Consulta
+from .models import Medico, Clinica, Consulta,Especialidade
+   
 
 
 User = get_user_model()
@@ -48,10 +49,40 @@ class UserAdmin(auth_admin.UserAdmin):
     )
 
     def get_user(self, obj):
-        return obj.user
+        return obj.username
 
     get_user.short_description = _("User")
+    
+    
+    
+    
+ 
 
-admin.site.register(Medico)
-admin.site.register(Clinica)
-admin.site.register(Consulta)
+
+
+class EspecialidadeAdmin(admin.ModelAdmin):
+    list_display = ['nome']
+
+
+
+class ClinicaAdmin(admin.ModelAdmin):
+    list_display = ['nome_fantasia', 'cnpj', 'endereco', 'telefone', 'data_inicio']
+    filter_horizontal = ['especialidades']
+
+
+
+class MedicoAdmin(admin.ModelAdmin):
+    list_display = ['nome', 'crm', 'cpf', 'rg', 'endereco', 'data_nascimento']
+
+
+
+class ConsultaAdmin(admin.ModelAdmin):
+    list_display = ['paciente', 'medico', 'clinica', 'data', 'horario', 'agendada']
+
+    
+    
+    
+admin.site.register(Medico,MedicoAdmin)
+admin.site.register(Clinica,ClinicaAdmin)
+admin.site.register(Consulta,ConsultaAdmin)
+admin.site.register(Especialidade,EspecialidadeAdmin)
