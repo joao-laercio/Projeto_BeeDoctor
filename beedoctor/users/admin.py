@@ -19,39 +19,16 @@ class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserSignupForm
     fieldsets = (
-        (None, {"fields": ("email", "password")}),
-        (_("Personal info"), {"fields": ("user", "cpf", "data_nascimento", "endereco", "username")}),
-        (
-            _("Permissions"),
-            {
-                "fields": (
-                    "is_active",
-                    "is_staff",
-                    "is_superuser",
-                    "groups",
-                    "user_permissions",
-                ),
-            },
-        ),
-        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
-    )
-    list_display = ["email", "get_user", "cpf", "data_nascimento", "endereco", "username"]
-    search_fields = ["email", "user", "username"]
-    ordering = ["id"]
-    add_fieldsets = (
-        (
-            None,
-            {
-                "classes": ("wide",),
-                "fields": ("email", "password1", "password2", "username"),
-            },
-        ),
-    )
+    (None, {"fields": ("email", "password")}),
+    (_("Personal info"), {"fields": ("username", "cpf", "data_nascimento", "endereco")}),
+    (_("Permissions"), {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")}),
+    (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+)
 
-    def get_user(self, obj):
-        return obj.username
 
-    get_user.short_description = _("User")
+ 
+
+    
     
     
     

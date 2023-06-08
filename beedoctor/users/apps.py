@@ -6,8 +6,4 @@ class UsersConfig(AppConfig):
     name = "beedoctor.users"
     verbose_name = _("Users")
 
-    def ready(self):
-        try:
-            import beedoctor.users.signals  # noqa: F401
-        except ImportError:
-            pass
+    

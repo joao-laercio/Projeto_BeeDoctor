@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "beedoctor",
+  "private_key_id": "8537b64a8718364f64434557d272723fb8775d1c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/OqfZRAHZQSbe\nzzF+241Ror96qd3XTaRYl9J2PFtcFw1rNXxY8aEJHHjZHDkSET4upLS7C+sM19HR\nqJYpbBzW8ToCfz0fGpyz2vSSHQqj0u2b3KLZc5BSWfVf5BJShQHUq1kNDDNUnMNd\n1d3Sucnzp+8Mo+UDD85hFbOMH0Dk3A8MmbeJKH6ftQy20F4VT33yQYqvfcV36Rvo\n1jPcuooTj87zMxE8MbNyMJZy+fDHiRIDXzTIMjyGkN1ZLI6h4/RWi4FNjyGFkCuH\nWq4UnZw+Yin7iUmyfm6BmAi38r+lp+MRTmBGMN7UOpl9H8oF+NMYCcfRmG7gxsA+\nvcW8beSzAgMBAAECggEAKIPH3gs/jQT1tE0XgnYHqd0eTmHA44XKpQ59g5lkDc3A\nhQ9O6hU/dgu3OuB04vQORZmVxO9QfGcZSB88uUfzkEKJdM/6ZiWgP6bLHE3U3EKr\nHtOPGR0X3aq7hvZuP1d4vNMUyePk2C9iYPYXyjacp+fTiM0MjyqBIiaT5MMWX6Y2\nG0IClqrd3QPCvq17hPEpGueHxFRf0avVnFMhnOTTU7NoBUJJ2Ui8SjMglGmGkrrn\nqpzMyQJziORU8gtaQXX8w/OAFlDf+E7o6CV8TC6YgZbIEDUA7MwihXQVqoSqfsSM\nIAPf+RyzAZ65g1R4kwLaCllRov156c8ZbHYagz7T6QKBgQDntcZVjWGNcaCzv9SB\ni++r0pvFq8wYCdgxMnsKK2itdLQkpMwJZJwNz5WcdJxn/BDzbBdhOj63kBfSNob6\nbeSGA0+9wtBBjCcPqDDZDny/F4huKJkE6Uy5LYYL5FUwdJP71yDzWUEA70kmz6gQ\noawuqxKk3vRinkiGgLFdnmjXTwKBgQDTRoZtygsvy3dN4D8iklJ9Z1aDqEL1pcCx\nCbccMjltsV+3pHrZPakM/r8iyPzjE63DqvHF1zwPQOyvM2Hai1k79Lg7f17eCPSQ\nSG6vzjEmTpiCaS6HT5TgPUCYNDOegUdTknRfNWH0KReEq9hygq0MnEAE1ZA2FqF9\n1sNSgKJDXQKBgQCncpyW/OoPrprk629mAzu73yKFUmbWxF6BBysVqVMnbtw0UwfE\njfmcnXRQMZFKMEYLtASdVds3CqG8X31iAwKPulrpFp0rkV41GWXbpnWOHzKP8TTL\n8NFqTTS+6U6LCuRarhf45Hpuc35Y1t5sznlA7I43qYvQrPRahywmLLE1TwKBgD3I\niPVAOWc/q+LVKgFVItRTTORxZytozmG3Qpn3Qf4G+cO9UMOImZAYSxLEDdfl4FGx\nAsTlPUYEqXJOp1X+nBjBZsLXa4mousQaumuk85CNOWIhmh6tsg6lOueHlHTMv2v8\nDxXsiXmaLqt4iXJrLmnao4oGXgbDNXSUQkg1H75tAoGAHadhrhzthg4fHjd+Hiad\nIInq9R7/+y2EtE9/gBYV0AuY0gPrsYNA3eQvQWq5ycGzOkBmu1ibxXP00DJtz2in\nGO2xy/FrioBFWxUp27PxC1OcBdJvsbdhkethwupMJQt58Q2F+cEvkmXGr6WcJ371\nYxZf7snGbawECjCDjoJzo7w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "beedoctor-social-account@beedoctor.iam.gserviceaccount.com",
+  "client_id": "115683541269359337598",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/beedoctor-social-account%40beedoctor.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

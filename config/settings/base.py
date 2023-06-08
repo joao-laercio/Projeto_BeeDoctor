@@ -72,6 +72,8 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
+    'sendgrid',
+    
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -79,6 +81,8 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    #providers
+    'allauth.socialaccount.providers.google',
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
@@ -103,6 +107,7 @@ MIGRATION_MODULES = {"sites": "beedoctor.contrib.sites.migrations"}
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
+    
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
@@ -218,10 +223,18 @@ X_FRAME_OPTIONS = "DENY"
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND",
-    default="django.core.mail.backends.smtp.EmailBackend",
-)
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+SENDGRID_USERNAME = 'apikey'
+SENDGRID_API_KEY='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'
+DEFAULT_FROM_EMAIL = 'fabio1010c@hotmail.com'
+SERVER = 'smtp.sendgrid.net'
+PORTS = '25, 587'
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False 
+# para conexões não criptografadas/TLS
+# PORTS = '465'  # para conexões SSL
+
+
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
@@ -305,3 +318,15 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '558673336139-1vk9vdm6nvql50v1as6fsvtfa7rtn2sj.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+
+SOCIALACCOUNT_AUTO_USERNAME = True

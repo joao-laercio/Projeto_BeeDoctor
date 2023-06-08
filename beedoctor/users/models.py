@@ -6,11 +6,9 @@ from django.db import models
 from beedoctor.users.managers import UserManager
 
 
-
-
 class User(AbstractUser):
     # Existing fields
-    username = models.CharField(_("username"), max_length=150, unique=True, default="")
+    username = models.CharField(_("username"), max_length=150, unique=False, default="")
     email = models.EmailField(_("email address"), unique=True)
 
     # New fields
@@ -18,13 +16,16 @@ class User(AbstractUser):
     data_nascimento = models.DateField(_("Data de Nascimento"), null=True, blank=True)
     endereco = models.TextField(_("Endereço"), blank=True)
 
+    # Field to store social ID
+    social_id = models.CharField(_("Social ID"), max_length=255, blank=True, null=True)
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     objects = UserManager()
 
     def get_absolute_url(self) -> str:
-        # Adicione a implementação do método get_absolute_url, se necessário
+        # Add implementation of the get_absolute_url method, if needed
         pass
 
         return reverse("users:detail", kwargs={"pk": self.id})

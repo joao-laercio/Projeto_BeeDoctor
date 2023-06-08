@@ -8,13 +8,23 @@ from django import forms
 from .models import Especialidade, Clinica, Medico, Consulta
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+from .models import User
+from .sendgrid import send_confirmation_email
+from allauth.account.forms import SignupForm
 User = get_user_model()
 
 class UserSignupForm(UserCreationForm):
-    cpf = forms.CharField(label="CPF", max_length=11)
+    cpf = forms.CharField(label="CPF", max_length=11,widget=forms.DateInput(attrs={'type': 'number'}))
     data_nascimento = forms.DateField(label="Data de Nascimento", widget=forms.DateInput(attrs={'type': 'date'}))
     endereco = forms.CharField(label="Endereço")
+    numero_residencia = forms.CharField(label="N°", widget=forms.NumberInput(attrs={'type': 'number'}))
+    ponto_referencia = forms.CharField(label="Ponto de Referência")
     username = forms.CharField(label="Username")
+    
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -33,11 +43,20 @@ class UserSignupForm(UserCreationForm):
         user.endereco = self.cleaned_data.get("endereco")
         if commit:
             user.save()
+
+            # Enviar e-mail de confirmação
+            send_confirmation_email(user)
+
         return user
+
     
 
 
 class UserSocialSignupForm(SocialSignupForm):
+    def __init__(self, *args, **kwargs):
+        super(UserSocialSignupForm, self).__init__(*args, **kwargs)
+        self.fields["username"].widget.attrs["readonly"] = True
+        self.fields["username"].required = False
     """
     Renders the form when user has signed up using social accounts.
     Default fields will be added automatically.
